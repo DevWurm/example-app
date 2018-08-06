@@ -6,7 +6,7 @@ import { IAppState } from './model';
 import { RootEpics } from './epics';
 
 describe('Store Module', () => {
-  let mockNgRedux: NgRedux<any>;
+  let mockNgRedux: MockNgRedux;
   let devTools: DevToolsExtension;
   let mockEpics: RootEpics;
 
@@ -18,7 +18,7 @@ describe('Store Module', () => {
 
       mockEpics = {
         createEpics() { return [] }
-      } as RootEpics;
+      } as any as RootEpics;
 
       devTools = testbed.get(DevToolsExtension);
       mockNgRedux = MockNgRedux.getInstance();
@@ -27,7 +27,7 @@ describe('Store Module', () => {
 
   it('should configure the store when the module is loaded', async(() => {
     const configureSpy = spyOn(MockNgRedux.getInstance(), 'configureStore');
-    const instance = new StoreModule(mockNgRedux, devTools, null, mockEpics);
+    const instance = new StoreModule(mockNgRedux as NgRedux<IAppState>, devTools, null as any, mockEpics);
 
     expect(configureSpy).toHaveBeenCalled();
   }));
