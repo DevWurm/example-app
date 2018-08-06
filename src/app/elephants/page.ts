@@ -4,7 +4,7 @@ import { pipe, values, sortBy, prop } from 'ramda';
 import { Observable } from 'rxjs/Observable';
 
 import { AnimalAPIActions } from '../animals/api/actions';
-import { ANIMAL_TYPES, IAnimal } from '../animals/model';
+import { ANIMAL_TYPE, IAnimal } from '../animals/model';
 
 export const sortAnimals = (animalDictionary$: Observable<{}>) =>
   animalDictionary$.map(
@@ -28,6 +28,6 @@ export class ElephantPageComponent {
   readonly error$: Observable<any>;
 
   constructor(actions: AnimalAPIActions) {
-    actions.loadAnimals(ANIMAL_TYPES.ELEPHANT);
+    actions.dispatch().loadAnimals(ANIMAL_TYPE.ELEPHANT);
   }
 }

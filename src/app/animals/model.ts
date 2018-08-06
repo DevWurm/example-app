@@ -1,6 +1,6 @@
-export const ANIMAL_TYPES = {
-  LION: 'lion',
-  ELEPHANT: 'elephant',
+export enum ANIMAL_TYPE {
+  LION = 'lion',
+  ELEPHANT = 'elephant',
 };
 
 // TODO: is there a way to improve this?
@@ -8,7 +8,7 @@ export type AnimalType = string;
 
 export interface IAnimal {
   id: string;
-  animalType: AnimalType;
+  animalType: ANIMAL_TYPE;
   name: string;
   ticketPrice: number;
   tickets: number;
